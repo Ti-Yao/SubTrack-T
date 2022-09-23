@@ -1,5 +1,4 @@
 from requests import get
-from urllib.parse import quote_plus
 from bs4 import BeautifulSoup as bs
 from sys import argv
 from subprocess import call
@@ -28,24 +27,6 @@ def get_magnet(search):
             return href
 
     return None
-
-
-if __name__ == '__main__':
-
-    if len(argv) > 2:
-
-        search = ' '.join(argv[1:])
-        magnet = get_magnet(search)
-
-        # call for transmission
-        if magnet is not None:
-            call(["transmission-gtk", magnet])
-        else:
-            print("No magnets found for", search)
-
-    else:
-        print("No input")
-
 
 for i in range(28,60):
     search = f'MasterChef Australia S14E{i} 1080p HEVC x265-MeGusta'
